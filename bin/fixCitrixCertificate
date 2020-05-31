@@ -1,0 +1,2 @@
+ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/
+c_rehash /opt/Citrix/ICAClient/keystore/cacerts
