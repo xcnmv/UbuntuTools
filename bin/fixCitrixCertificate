@@ -1,2 +1,3 @@
 ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/
 c_rehash /opt/Citrix/ICAClient/keystore/cacerts
+cp /etc/ssl/certs/USERTrust_RSA_Certification_Authority.pem /opt/Citrix/ICAClient/keystore/cacerts
