@@ -19,3 +19,11 @@ RelativeMouseOffChar=
 RelativeMouseOffShift=
 SoftwareMouse=*
 ```
+
+# code to ignore some errors
+You update it in ```.ICAClient/wfclient.ini```
+```
+[WFClient]
+IgnoreErrors=9,15,32
+
+```
