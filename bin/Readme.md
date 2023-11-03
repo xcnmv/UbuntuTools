@@ -1,4 +1,7 @@
-# code to make mouse middle click work correctly
+# More Details and Config
+Arch Linux Wiki: https://wiki.archlinux.org/title/Citrix
+
+# Make Mouse Middle Click Open New Tabs
 You place it into ```All_Regions.ini``` config file, usually found in ```/etc/icaclient/config```
 ```
 [Virtual Channels\Mouse]
@@ -20,7 +23,7 @@ RelativeMouseOffShift=
 SoftwareMouse=*
 ```
 
-# code to ignore some errors
+# Code to Ignore Disconnect Errors
 You update it in ```.ICAClient/wfclient.ini```
 ```
 [WFClient]
