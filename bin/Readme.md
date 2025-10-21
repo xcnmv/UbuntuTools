@@ -14,6 +14,17 @@ See fixCitrixCertificate script.
 # More Details and Config
 Arch Linux Wiki: https://wiki.archlinux.org/title/Citrix
 
+# Make Self-Service (Workspace) App Work on Ubuntu
+_Don't use instructions from the Citrix website, as it breaks network mounts accessible through GNOME Files (Nautilus)_
+```
+sudo apt-add-repository deb http://us.archive.ubuntu.com/ubuntu jammy main
+sudo apt install libwebkit2gtk-4.0-dev
+sudo apt-add-repository -r deb http://us.archive.ubuntu.com/ubuntu jammy main
+```
+_Sources:_
+* https://docs.citrix.com/en-us/citrix-workspace-app-for-linux/system-requirements.html
+* https://www.chippiko.com/installing-libwebkit2gtk-4-0-ubuntu
+
 # Make Mouse Middle Click Open New Tabs
 You place it into ```All_Regions.ini``` config file, usually found in ```/etc/icaclient/config/All_Regions.ini```
 ```
