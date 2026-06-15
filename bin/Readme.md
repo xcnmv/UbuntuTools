@@ -14,7 +14,7 @@ See fixCitrixCertificate script.
 # More Details and Config
 Arch Linux Wiki: https://wiki.archlinux.org/title/Citrix
 
-# Make Self-Service (Workspace) App Work on Ubuntu
+# Make Self-Service (Workspace) App Work on Ubuntu 24.04
 _Don't use instructions from the Citrix website, as it breaks network mounts accessible through GNOME Files (Nautilus)_
 ```
 sudo apt-add-repository deb http://us.archive.ubuntu.com/ubuntu jammy main
