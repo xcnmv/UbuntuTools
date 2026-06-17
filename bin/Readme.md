@@ -25,6 +25,31 @@ _Sources:_
 * https://docs.citrix.com/en-us/citrix-workspace-app-for-linux/system-requirements.html
 * https://www.chippiko.com/installing-libwebkit2gtk-4-0-ubuntu
 
+# Self-Service (Workspace) App on Debian Trixie
+## Create Ubuntu 22.04 container
+```
+sudo apt update
+sudo apt install distrobox podman -y
+distrobox create --name citrix-gui --image ubuntu:22.04 --unshare-netns
+```
+## Enter Contsainer
+```
+distrobox enter citrix-gui
+sudo apt update
+sudo apt install libwebkit2gtk-4.0-37 libjavascriptcoregtk-4.0-18 libxml2 libcanberra-gtk-module -y
+sudo apt install ~/Downloads/icaclient_*_arm64.deb -y
+sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/
+sudo c_rehash /opt/Citrix/ICAClient/keystore/cacerts
+distrobox-export --app selfservice
+exit
+```
+## Back on Trixie
+```
+xhost +si:localuser:$USER
+distrobox enter citrix-gui --additional-flags "--env DISPLAY=$DISPLAY --env XAUTHORITY=$XAUTHORITY"
+```
+ 
+
 # Make Mouse Middle Click Open New Tabs
 You place it into ```All_Regions.ini``` config file, usually found in ```/etc/icaclient/config/All_Regions.ini```
 ```
