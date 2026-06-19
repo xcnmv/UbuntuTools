@@ -30,23 +30,19 @@ _Sources:_
 ```
 sudo apt update
 sudo apt install distrobox podman -y
-distrobox create --name citrix-gui --image ubuntu:22.04 --unshare-netns
+xhost +si:localuser:$USER
+distrobox create --name citrix-gui --image ubuntu:22.04 --unshare-netns --additional-flags "--env DISPLAY=$DISPLAY --env XAUTHORITY=$XAUTHORITY"
 ```
-## Enter Contsainer
+## Enter Container
 ```
 distrobox enter citrix-gui
 sudo apt update
-sudo apt install libwebkit2gtk-4.0-37 libjavascriptcoregtk-4.0-18 libxml2 libcanberra-gtk-module -y
+sudo apt install libwebkit2gtk-4.0-37 libjavascriptcoregtk-4.0-18 libxml2 libcanberra-gtk-module pcscd libpcsclite1 libpcsclite-dev -y
 sudo apt install ~/Downloads/icaclient_*_arm64.deb -y
 sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/
 sudo c_rehash /opt/Citrix/ICAClient/keystore/cacerts
 distrobox-export --app selfservice
 exit
-```
-## Back on Trixie
-```
-xhost +si:localuser:$USER
-distrobox enter citrix-gui --additional-flags "--env DISPLAY=$DISPLAY --env XAUTHORITY=$XAUTHORITY"
 ```
  
 
