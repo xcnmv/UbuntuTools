@@ -30,21 +30,30 @@ _Sources:_
 ```
 sudo apt update
 sudo apt install distrobox podman -y
-xhost +si:localuser:$USER
 distrobox create --name citrix-gui --image ubuntu:22.04 --unshare-netns --additional-flags "--env DISPLAY=$DISPLAY --env XAUTHORITY=$XAUTHORITY"
 ```
-## Enter Container
+## Download Citrix Workspace Client
+Navigate to citrix page to download correct .deb package.
+## Enter the Container
 ```
 distrobox enter citrix-gui
+```
+Inside the container:
+```
 sudo apt update
 sudo apt install libwebkit2gtk-4.0-37 libjavascriptcoregtk-4.0-18 libxml2 libcanberra-gtk-module pcscd libpcsclite1 libpcsclite-dev -y
-sudo apt install ~/Downloads/icaclient_*_arm64.deb -y
+sudo apt install ~/Downloads/icaclient_*_amd64.deb -y # for raspberry pi chose arm64 instead amd64
 sudo ln -s /usr/share/ca-certificates/mozilla/* /opt/Citrix/ICAClient/keystore/cacerts/
 sudo c_rehash /opt/Citrix/ICAClient/keystore/cacerts
 distrobox-export --app selfservice
 exit
 ```
- 
+## Run Citrix Workspace 
+In your apps on the host you will see the installed app.
+*Note:* _on raspberry pi you might need to run the below command after every boot_
+```
+xhost +si:localuser:$USER
+```
 
 # Make Mouse Middle Click Open New Tabs
 You place it into ```All_Regions.ini``` config file, usually found in ```/etc/icaclient/config/All_Regions.ini```
